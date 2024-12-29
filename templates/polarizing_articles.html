@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polarizing Articles</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="polarizing-articles-container">
+        <h2>Polarizing Articles</h2>
+        <ul>
+            {% for article in articles %}
+                <li>
+                    <h4>{{ article.title }}</h4>
+                    <p>{{ article.description }}</p>
+                    <p><strong>Sentiment:</strong> {{ article.sentiment_score }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    </div>
+</body>
+</html>

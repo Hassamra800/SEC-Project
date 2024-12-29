@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .login-container {
+            width: 400px; /* Set a width for the container */
+            margin: auto; /* Center the container */
+            padding: 20px; /* Add some padding */
+            border: 1px solid #ccc; /* Optional: Add a border */
+            border-radius: 5px; /* Optional: Add rounded corners */
+            background-color: #f9f9f9; /* Optional: Background color */
+        }
+    </style>
+</head>
+<body style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <div class="login-container">
+        <div id="login-form-container">
+            <h2>Login</h2>
+            <form action="{{ url_for('login') }}" method="POST">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <a style="padding-top:15px;" href="{{ url_for('forgot_password') }}">Forgot password?</a>
+            <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+        </div> <!-- Close the login-form-container div -->
+    </div> <!-- Close the login-container div -->
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{ username }}!</h1>
+        
+        <!-- Personalized Feed Section -->
+        <section>
+            <h2>Personalized News Feed</h2>
+            <div class="news-box">
+                <ul>
+                    {% for article in personalized_feed %}
+                        <li class="news-item">
+                            <div class="article-content">
+                                <strong>{{ article.title }}</strong>
+                                <p>{{ article.description }}</p>
+                            </div>
+                            <!-- Sentiment Box -->
+                            <div class="sentiment-box">
+                                Sentiment Score: <em>{{ article.sentiment_score }}</em>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li>No personalized news available at the moment.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+        <!-- Topic Popularity Section -->
+        <section>
+            <h2>Topic Popularity</h2>
+            <div class="popularity-box">
+                <ul>
+                    {% for category, count in topic_popularity.items() %}
+                        <li>{{ category }}: {{ count }} articles</li>
+                    {% else %}
+                        <li>No topic popularity data available.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+        <!-- Most Read Articles Section -->
+        <section>
+            <h2>Most Read Articles</h2>
+            <div class="most-read-box">
+                <ul>
+                    {% for article in most_read_articles %}
+                        <li>{{ article.title }} - Read {{ article.read_count }} times</li>
+                    {% else %}
+                        <li>No most-read articles available.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+        <!-- Logout Button -->
+        <form action="{{ url_for('logout') }}" method="POST">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</body>
+</html>

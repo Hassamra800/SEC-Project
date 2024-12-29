@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis for {{ topic }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="sentiment-analysis-container">
+        <h2>Sentiment Analysis for "{{ topic }}"</h2>
+        <ul>
+            {% for analysis in sentiment_analysis %}
+                <li>
+                    <h4>{{ analysis.title }}</h4>
+                    <p><strong>Sentiment:</strong> {{ analysis.sentiment }}</p>
+                    <p><strong>Polarity:</strong> {{ analysis.polarity }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    </div>
+</body>
+</html>
